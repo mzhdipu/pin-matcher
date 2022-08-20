@@ -44,6 +44,8 @@ document.getElementById("calculator").addEventListener("click", function(event){
     }
 })
 
+
+
 document.getElementById("verify-pin").addEventListener("click", function(){
     //let matchPin = getPin();
     let displayPin = document.getElementById("display-pin")
@@ -63,5 +65,38 @@ document.getElementById("verify-pin").addEventListener("click", function(){
     }
 
     typedNumber.value ="";
+
+
+    // try left checing
+    let tryLeft = document.getElementById("try-left");
+    let removeText = document.getElementById("remove-text");
+    let count = verifyTryLeft();
+    tryLeft.innerText = count;
     
+    if(count < 1){
+        tryLeft.innerHTML = "Your account is block";
+        removeText.style.display = "none"
+        return;
+    }
+
+    
+        
 })
+
+let verifyDisplayPin = document.getElementById("display-pin");
+let verifyTypedNumbers = document.getElementById("typed-numbers");
+let count = 3;
+
+function verifyTryLeft(){
+    if(verifyDisplayPin.value !== verifyTypedNumbers.value){
+        count--;
+    }
+    else{
+        console.log(true)
+    }
+    return count
+}
+
+
+
+
